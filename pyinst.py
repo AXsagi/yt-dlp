@@ -45,7 +45,7 @@ def main():
 
     print(f'Running PyInstaller with {opts}')
     run_pyinstaller(opts)
-    set_version_info(final_file, version)
+    #set_version_info(final_file, version)
 
 
 def parse_options():
