@@ -156,10 +156,9 @@ class _YoutubeDLOptionParser(optparse.OptionParser):
 
     def __init__(self):
         super().__init__(
-            prog='yt-dlp' if detect_variant() == 'source' else None,
+            prog='youtube-dl' if detect_variant() == 'source' else None,
             version=__version__,
             usage='%prog [OPTIONS] URL [URL...]',
-            epilog='See full documentation at  https://github.com/yt-dlp/yt-dlp#readme',
             formatter=_YoutubeDLHelpFormatter(),
             conflict_handler='resolve',
         )
@@ -365,7 +364,7 @@ def create_parser():
         help=(
             'Use this prefix for unqualified URLs. '
             'E.g. "gvsearch2:python" downloads two videos from google videos for the search term "python". '
-            'Use the value "auto" to let yt-dlp guess ("auto_warning" to emit a warning when guessing). '
+            'Use the value "auto" to let youtube-dl guess ("auto_warning" to emit a warning when guessing). '
             '"error" just throws an error. The default value "fixup_error" repairs broken URLs, '
             'but emits an error if this is not possible instead of searching'))
     general.add_option(
@@ -444,7 +443,7 @@ def create_parser():
             }
         }, help=(
             'Options that can help keep compatibility with youtube-dl or youtube-dlc '
-            'configurations by reverting some of the changes made in yt-dlp. '
+            'configurations by reverting some of the changes made in youtube-dl. '
             'See "Differences in default behavior" for details'))
     general.add_option(
         '--alias', metavar='ALIASES OPTIONS', dest='_', type='str', nargs=2,
@@ -659,7 +658,7 @@ def create_parser():
     authentication.add_option(
         '-p', '--password',
         dest='password', metavar='PASSWORD',
-        help='Account password. If this option is left out, yt-dlp will ask interactively')
+        help='Account password. If this option is left out, youtube-dl will ask interactively')
     authentication.add_option(
         '-2', '--twofactor',
         dest='twofactor', metavar='TWOFACTOR',
@@ -687,7 +686,7 @@ def create_parser():
     authentication.add_option(
         '--ap-password',
         dest='ap_password', metavar='PASSWORD',
-        help='Multiple-system operator account password. If this option is left out, yt-dlp will ask interactively')
+        help='Multiple-system operator account password. If this option is left out, youtube-dl will ask interactively')
     authentication.add_option(
         '--ap-list-mso',
         action='store_true', dest='ap_list_mso', default=False,
@@ -704,7 +703,7 @@ def create_parser():
         '--client-certificate-password',
         dest='client_certificate_password', metavar='PASSWORD',
         help='Password for client certificate private key, if encrypted. '
-             'If not provided, and the key is encrypted, yt-dlp will ask interactively')
+             'If not provided, and the key is encrypted, youtube-dl will ask interactively')
 
     video_format = optparse.OptionGroup(parser, 'Video Format Options')
     video_format.add_option(
@@ -1405,8 +1404,8 @@ def create_parser():
     filesystem.add_option(
         '--cache-dir', dest='cachedir', default=None, metavar='DIR',
         help=(
-            'Location in the filesystem where yt-dlp can store some downloaded information '
-            '(such as client ids and signatures) permanently. By default ${XDG_CACHE_HOME}/yt-dlp'))
+            'Location in the filesystem where youtube-dl can store some downloaded information '
+            '(such as client ids and signatures) permanently. By default ${XDG_CACHE_HOME}/youtube-dl'))
     filesystem.add_option(
         '--no-cache-dir', action='store_false', dest='cachedir',
         help='Disable filesystem caching')
