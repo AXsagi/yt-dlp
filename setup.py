@@ -48,7 +48,6 @@ def py2exe_params():
         'console': [{
             'script': './yt_dlp/__main__.py',
             'dest_base': 'yt-dlp',
-            'icon_resources': [(1, 'devscripts/logo.ico')],
         }],
         'version_info': {
             'version': VERSION,
