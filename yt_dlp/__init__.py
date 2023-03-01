@@ -925,14 +925,14 @@ def _real_main(argv=None):
         FFmpegPostProcessor._ffmpeg_location.set(opts.ffmpeg_location)
 
     with YoutubeDL(ydl_opts) as ydl:
-        pre_process = opts.update_self or opts.rm_cachedir
+        pre_process = opts.rm_cachedir
         actual_use = all_urls or opts.load_info_filename
 
         if opts.rm_cachedir:
             ydl.cache.remove()
 
         updater = Updater(ydl)
-        if opts.update_self and updater.update() and actual_use:
+        if updater.update() and actual_use:
             if updater.cmd:
                 return updater.restart()
             # This code is reachable only for zip variant in py < 3.10
