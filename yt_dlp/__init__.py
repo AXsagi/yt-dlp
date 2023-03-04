@@ -931,15 +931,6 @@ def _real_main(argv=None):
         if opts.rm_cachedir:
             ydl.cache.remove()
 
-        updater = Updater(ydl)
-        if updater.update() and actual_use:
-            if updater.cmd:
-                return updater.restart()
-            # This code is reachable only for zip variant in py < 3.10
-            # It makes sense to exit here, but the old behavior is to continue
-            ydl.report_warning('Restart yt-dlp to use the updated version')
-            # return 100, 'ERROR: The program must exit for the update to complete'
-
         if not actual_use:
             if pre_process:
                 return ydl._download_retcode
